@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Dejacksonify Demo</title>
+
+		<script src="../examples/example1.js"></script>
+
+		<!-- <script src="../dejacksonify.js"></script> -->
+		<script src="../dejacksonify-min.js"></script>
+
+		<style>
+			.columns{
+				width: 100%;
+			}
+			.column{
+				border: 1px solid #708090;
+				background-color: #FFFAFA;
+				height: 450px;
+				overflow: auto;
+			}
+			.column.left{
+				float: left;
+				width: 45%;
+			}
+			.column.right{
+				float: right;
+				width: 45%;
+			}
+			.output{
+				font-family: monospace;
+    			white-space: pre;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Dejacksonify Demo</h1>
+		<p>
+			Click the buttons to run examples.
+		</p>
+
+		<p>
+			<button onclick="runExample(example1);">Example 1</button>
+			<button onclick="runExample(example2);">Example 2</button>
+		</p>
+
+		<div id="columns">
+			<div class="column left">
+				<p>
+					Original
+				</p>
+				<div class="output" id="source"></div>
+			</div>
+			<div class="column right">
+				<p>
+					Result
+				</p>
+				<div class="output" id="output"></div>
+			</div>
+		</div>
+
+
+		<script>
+			function runExample(data){
+				var test = new Dejacksonify(data, "id");
+				document.getElementById("source").innerHTML = JSON.stringify(data, null, '   ');
+				document.getElementById("output").innerHTML = JSON.stringify(test.getResult(), null, '   ');
+			}
+		</script>
+	</body>
+</html>
